@@ -1,0 +1,18 @@
+div {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(153, 149, 149);
+    border: 5px dotted black;
+    padding: 10px;
+    /* 배경색 범위 지정 */
+    background-clip: border-box;
+}
+.bk-color1 {
+    background-clip: border-box;
+}
+.bk-color2 {
+    background-clip: padding-box;
+}
+.bk-color3 {
+    background-clip: content-box;
+}
