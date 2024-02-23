@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: black;
+}
+.container {
+    border: 2px dotted gray;
+    background-color: white;
+    width: 650px;
+    height: 900px;
+    margin: 1rem auto;
+    padding: 2rem;
+    background-image: url('../img/다운로드.png');
+    background-repeat: no-repeat;
+    background-position: bottom right 30px;
+    
+}
+h1 {
+    background-color: rgb(29, 85, 76);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    width: 550px;
+    margin: 0 auto;
+}
+h2 {
+    margin: 2rem auto;
+    width: 550px;
+    text-align: center;
+}
+h3 {
+    color: red;
+    margin: 1rem;
+}
+ul {
+    list-style-type: none;
+    margin-left: 3rem;
+}
+li {
+    margin: 0.5rem;
+}
