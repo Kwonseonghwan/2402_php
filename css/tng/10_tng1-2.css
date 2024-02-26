@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding: 2rem;
+}
+.nav > ul {
+    list-style-type: none;
+    width: 600px;
+    height: 50px;
+    font-size: 0;
+    height: 50px;
+    box-shadow: 1px 5px 5px 1px gray;
+}
+.nav > ul > li {
+    display: inline-block;
+    width: 100px;
+    background-color: rgb(182, 180, 180);
+    font-size: 1rem;
+    height: 100%;
+    text-align: center;
+    line-height: 50px;
+}
+/* 마지막 요소 제외하고 오른쪽 외곽선 지정 */
+.nav > ul > li:not(:last-child) {
+    border-right: 2px solid greenyellow;
+}
+/* 1~5번 요소 마우스 올릴 시 배경색 지정 */
+.nav > ul > li:not(:nth-last-child(1)):hover {
+    background-color: gray;
+}
+.nav > ul > li:last-child:hover {
+    background-color: red;
+    color: white;
+}

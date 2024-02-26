@@ -1,0 +1,39 @@
+* {
+    margin: 0 ;
+    padding: 0 auto;
+}
+body {
+    padding: 2rem;
+    margin: 1rem 10%;
+}
+.lg1 {
+    color: rgb(226, 63, 204);
+    font-size: xx-large;
+    font-weight: 900;
+}
+.sp1 {
+    color: red;
+}
+fieldset {
+    width: 500px;
+    height: 100%;
+    line-height: 50px;
+    background-image: url(../img/다운로드.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.memo1 {
+   height: 100px;
+   width: 200px;
+   border: 1px solid gray;
+   
+}
+input {
+    border: 3px solid black;
+    background-color: rgba(240, 248, 255, 0);
+}
+input:focus {
+    border: 3px solid red;
+}
+
+

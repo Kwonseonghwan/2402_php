@@ -1,0 +1,32 @@
+* {
+    padding: 0 auto;
+    margin: 0 ; 
+}
+.ul1 {
+    
+}
+.li1 {
+    text-align: center;
+    list-style: none;
+    background-color: rgb(184, 182, 182);
+    width: 50px;
+    padding: 10px;
+    margin: 20px 0;
+    height: 25px;
+    float: left;
+    border-left: 1px solid rgb(81, 206, 133);
+    box-shadow: 1px 5px 5px 1px #000;
+}
+#m1 {
+    border: none;
+}
+.li1:nth-child(1):hover {
+    background-color: rgb(59, 58, 58);
+}
+.li1:nth-child(6):hover {
+    background-color: rgb(255, 0, 0);
+}
+p:hover {
+    color: white;
+}
+
