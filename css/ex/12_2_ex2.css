@@ -1,0 +1,31 @@
+.container {
+    width: 500px;
+    height: 500px;
+    background-color: #808080;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    justify-content: space-between;
+    align-content: space-between;
+}
+.item {
+    background-color: cadetblue;
+    border: 1px solid black;
+}
+.row-2 {
+    width: 49%;
+}
+.column-2 {
+    height: 47%;
+}
+.column-3 {
+    height: 32%;
+}
+.row-1 {
+    width: 100%;
+}
+.item_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
