@@ -1,16 +1,13 @@
 .q1 {
     width: 700px;
     margin: 10px auto;
-   
 }
 .q2 {
     border: 1px solid black;
     width: 240px;
     height: 200px;
     margin: 50px;
-    
     float: left;
-    
 }
 .q3 {
     border: 1px solid blue;
