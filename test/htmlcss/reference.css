@@ -1,0 +1,88 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Madimi one", sans-serif;
+    scroll-behavior: smooth;
+    font-style: normal;
+    font-weight: 400;
+}
+a {
+    background-color: goldenrod;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    display: inline-block;
+    text-align: center;
+}
+a:hover {
+    opacity: 0.5;
+    transition: all 1s;
+}
+.header {
+    background-image: url(./img/img_1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    color: white;
+    align-items: center;
+}
+h1 {
+    font-size: 4rem;
+    padding: 4rem 0;
+
+}
+.header_info > p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+.main {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
+    gap: 1rem;
+    margin-bottom: 50px;
+}
+.item {
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgb(224, 221, 221);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.item > p {
+    margin-bottom: 1rem;
+}
+.figure {
+    position: relative;
+    margin-bottom: 1rem;
+}
+.figure > img {
+    width: 100%;
+}
+.figcaption {
+    position: absolute;
+    bottom: 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.541);
+    color: white;
+    width: 100%;
+}
+.item > a {
+    font-size: 1rem;
+}
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
