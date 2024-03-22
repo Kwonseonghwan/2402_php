@@ -17,15 +17,15 @@ for($i = 1; $i < 101; $i++) {
 }
 
 
-$b = ;
-for($a = 1; $a < 101; $a++) {
-  
+
+
+$arr = range(1, 100);
+foreach($arr as $val) {
+  if(($val % 3) === 0) {
+    continue;
+  }
+  echo $val."입니다\n";
 }
-
-
-
-
-
 
 
 
