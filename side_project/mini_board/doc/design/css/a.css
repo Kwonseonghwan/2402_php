@@ -2,6 +2,23 @@
     padding: 0;
     margin: 0;
 }
+.main {
+    width: 500px;
+    margin: 0 auto;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr ;
+    gap: 10px;
+}
+.list {
+    background-color: rgb(202, 187, 216);
+    padding: 80px 30px;
+}
+.row-1 {
+    grid-column: 1/3;
+}
+
 
 
 

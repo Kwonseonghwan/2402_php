@@ -24,7 +24,6 @@ main {
     grid-template-columns: 10% 90%; 
     padding: 40px 10px;
     border: 1px solid black;
-    
     border-top-color: transparent;
 }
 .item {
@@ -64,4 +63,6 @@ input:focus {
 
  /*
  fontawesome
-  <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link> */
+  <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link> 
+  https://www.codingfactory.net/10648
+  */

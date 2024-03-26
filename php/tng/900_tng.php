@@ -28,7 +28,15 @@ foreach($arr as $val) {
 }
 
 
-
+$i = 1;
+while ( $i < 10 ) {
+  $j = 1;
+  while ( $j < 10 ) {
+    echo $i . ' x ' . $j . ' = ' . $i * $j . "\n";
+    $j++;
+  }
+  $i++;
+}
 
 
 
