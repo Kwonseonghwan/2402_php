@@ -5,6 +5,7 @@ xcopy 원본경로 카피경로 /E /Y
 예) 
 
 xcopy D:\workspace\2402_php\side_project\mini_board\src C:\Apache24\htdocs /E /Y
+xcopy C:\Users\권성환\OneDrive\바탕 화면\html\2402_php\side_project C:\Apache24\htdocs /E /Y
 
 
 
