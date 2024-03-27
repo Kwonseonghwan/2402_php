@@ -43,7 +43,7 @@ if(REQUEST_METHOD === "POST") {
 
         // 커밋
         $conn->commit();
-
+        
         // 리스트 페이지로 이동
         header("Location: list.php");
         exit;
@@ -58,9 +58,7 @@ if(REQUEST_METHOD === "POST") {
             $conn = null;
         }
     }
-
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -95,11 +93,10 @@ if(REQUEST_METHOD === "POST") {
       <div class="main-bottom">
           <button type="submit" class="a-button small-button">작성</button>
           <button type="button">
-            <a href="./index.html" class="a-button small-button">취소</a>
+            <a href="./index.php" class="a-button small-button">취소</a>
           </button>
       </div>
-      </form>
-        
+      </form>        
     </main>
 </body>
 </html>
