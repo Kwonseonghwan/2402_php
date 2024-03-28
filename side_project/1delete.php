@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER["DOCUMENT_ROOT"]."/config.php"); 
+require_once($_SERVER["DOCUMENT_ROOT"]."/1config.php"); 
 require_once(FILE_LIB_DB); 
 
 try {
@@ -60,7 +60,7 @@ try {
 
         $conn->commit();
 
-        header("Location: list.php");
+        header("Location: 1main.php");
         exit;
     }
 } catch (\Throwable $e) {
@@ -81,7 +81,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./1main.css">
     <title>삭제페이지</title>
 </head>
 <body>
@@ -94,27 +94,27 @@ try {
       </div>
         <div class="main-middle">
             <div class="line-item">
-                <div class="line-title">게시글 번호</div>
+                <div class="insert-title">게시글 번호</div>
                 <div class="line-content"><?php echo $item["no"] ?></div>
             </div>
             <div class="line-item">
-                <div class="line-title">제목</div>
+                <div class="insert-title">제목</div>
                 <div class="line-content"><?php echo $item["title"]; ?></div>
             </div>
             <div class="line-item">
-                <div class="line-title">내용</div>
+                <div class="insert-title">내용</div>
                 <div class="line-content"><?php echo $item["content"]; ?></div>
             </div>
             <div class="line-item">
-                <div class="line-title">작성 일자</div>
+                <div class="insert-title">작성 일자</div>
                 <div class="line-content"><?php echo $item["created_at"]; ?></div>
             </div>
         </div>
         <div class="main-bottom">
-            <form action="./delete.php" method="post">
+            <form action="./1delete.php" method="post">
                 <input type="hidden" name="no" value="<?php echo $no; ?>">
-                <button type="submit" class="a-button">동의</button>
-            <a href="./detail.php?no=<?php echo $no ?>&page=<?php echo $page ?>" class="a-button">취소</a>
+                <button type="submit" class="a-button small-button">동의</button>
+            <a href="./1detail.php?no=<?php echo $no ?>&page=<?php echo $page ?>" class="a-button small-button">취소</a>
             </form>
         </div>
     </main>

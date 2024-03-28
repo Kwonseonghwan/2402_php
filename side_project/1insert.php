@@ -1,6 +1,6 @@
 <?php
 
-require_once( $_SERVER["DOCUMENT_ROOT"]."/config.php"); 
+require_once( $_SERVER["DOCUMENT_ROOT"]."/1config.php"); 
 require_once(FILE_LIB_DB); 
 
 if(REQUEST_METHOD === "POST") {
@@ -12,14 +12,14 @@ if(REQUEST_METHOD === "POST") {
         
         $arr_err_param = [];
         if($title === "") {
-            $arr_err_param[] = "title";
+            $arr_err_param[] = "제목도 쓰세요";
         }
         if($content === "") {
-            $arr_err_param[] = "content";
+            $arr_err_param[] = "내용도 쓰세요";
         }
         if(count($arr_err_param) > 0) {
            
-            throw new Exception("Parameter Error : ".implode(", ", $arr_err_param));
+            throw new Exception("에러: ".implode(", ", $arr_err_param));
         }
 
         $conn = my_db_conn(); 
@@ -41,7 +41,7 @@ if(REQUEST_METHOD === "POST") {
         $conn->commit();
         
         
-        header("Location: main.php");
+        header("Location: 1main.php");
         exit;
     } catch (\Throwable $e) {
         if(!empty($conn)) {
@@ -61,16 +61,16 @@ if(REQUEST_METHOD === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./1main.css">
     <title>작성 페이지</title>
 </head>
 <body>
    
     <main>
-      <form action="./insert.php" method="post">
+      <form action="./1insert.php" method="post">
         
           <div class="line-item">
-            <label class="line-title" for="title">
+            <label class="insert-title" for="title">
               <div>제목</div>
             </label>
               <div class="line-content">
@@ -78,8 +78,8 @@ if(REQUEST_METHOD === "POST") {
               </div>
           </div>
           <div class="line-item">
-            <label class="line-title" for="content">
-              <div class="line-title-textarea">내용</div>
+            <label class="insert-title" for="content">
+              <div class="insert-title-textarea">내용</div>
             </label>
               <div class="line-content">
                 <textarea name="content" id="content" rows="10"></textarea>
@@ -87,9 +87,12 @@ if(REQUEST_METHOD === "POST") {
           </div>
       
       
-          <button type="submit" class="a-button">작성</button>
+          <button type="submit" class="a-button small-button">작성</button>
           <button type="button">
-            <a href="./index.php" class="a-button">취소</a>
+            <a href="./1insert.php" class="a-button small-button">취소</a>
+          </button>
+          <button type="button">
+            <a href="./1main.php" class="a-button small-button">홈</a>
           </button>
       
       </form>        
