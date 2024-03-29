@@ -35,14 +35,11 @@ try {
     echo $e->getMessage();
     exit;
 } finally {
-   
     if(!empty($conn)) {
         $conn = null;
     }
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -52,9 +49,11 @@ try {
     <title>상세페이지</title>
 </head>
 <body>
-   
     <main>
-        
+        <div class="main-top">
+          상세
+        </div>
+        <div class="main-middle">
             <div class="line-item">
                 <div class="insert-title">게시글 번호</div>
                 <div class="line-content"><?php echo $item["no"] ?></div>
@@ -71,12 +70,12 @@ try {
                 <div class="insert-title">작성 일자</div>
                 <div class="line-content"><?php echo $item["created_at"] ?></div>
             </div>
-        
-        
+        </div>
+        <div class="main-bottom">
             <a href="./1update.php?no=<?php echo $no ?>&page=<?php echo $page ?>" class="a-button small-button">수정</a>
             <a href="./1main.php?page=<?php echo $page ?>" class="a-button small-button">이전</a>
-            <a href="./1delete.php?no=<?php echo $no ?>&page=<?php echo $page ?>" class="a-button small-button">삭제</a>
-       
+            <a href="./1delete.php?no=<?php echo $no ?>&page=<?php echo $page ?>" class="delete-button">삭제</a>
+        </div>
     </main>
 </body>
 </html>

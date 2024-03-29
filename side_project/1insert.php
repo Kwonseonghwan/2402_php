@@ -9,7 +9,6 @@ if(REQUEST_METHOD === "POST") {
         $title = isset($_POST["title"]) ? trim($_POST["title"]) : ""; 
         $content = isset($_POST["content"]) ? trim($_POST["content"]) : ""; 
         
-        
         $arr_err_param = [];
         if($title === "") {
             $arr_err_param[] = "제목도 쓰세요";
@@ -26,20 +25,17 @@ if(REQUEST_METHOD === "POST") {
 
         $conn->beginTransaction();
         
-       
         $arr_param = [
             "title" => $title
             ,"content" => $content
         ];
         $result = db_insert_boards($conn, $arr_param);
 
-        
         if($result !== 1) {
             throw new Exception("Insert Boards count");
         }
 
         $conn->commit();
-        
         
         header("Location: 1main.php");
         exit;
@@ -59,42 +55,44 @@ if(REQUEST_METHOD === "POST") {
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./1main.css">
-    <title>작성 페이지</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./1main.css">
+  <title>작성 페이지</title>
 </head>
 <body>
-   
     <main>
+      <div class="main-top">
+           작성
+      </div>
+      <div class="main-middle">
       <form action="./1insert.php" method="post">
-        
           <div class="line-item">
             <label class="insert-title" for="title">
-              <div>제목</div>
+            <div>제목</div>
             </label>
-              <div class="line-content">
-                <input type="text" name="title" id="title">
-              </div>
-          </div>
-          <div class="line-item">
+            <div class="line-content">
+            <input type="text" name="title" id="title">
+            </div>
+            </div>
+            <div class="line-item">
             <label class="insert-title" for="content">
-              <div class="insert-title-textarea">내용</div>
+            <div class="insert-title-textarea">내용</div>
             </label>
-              <div class="line-content">
-                <textarea name="content" id="content" rows="10"></textarea>
-              </div>
+            <div class="line-content">
+            <textarea name="content" id="content" rows="10"></textarea>
+            </div>
           </div>
-      
-      
+          </div>
+      <div class="main-bottom">
           <button type="submit" class="a-button small-button">작성</button>
           <button type="button">
-            <a href="./1insert.php" class="a-button small-button">취소</a>
+          <a href="./1insert.php" class="a-button small-button">취소</a>
           </button>
           <button type="button">
-            <a href="./1main.php" class="a-button small-button">홈</a>
+          <a href="./1main.php" class="a-button small-button">홈</a>
           </button>
-      
+      </div>
       </form>        
     </main>
 </body>

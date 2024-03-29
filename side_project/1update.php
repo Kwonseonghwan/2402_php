@@ -30,7 +30,6 @@ try {
             throw new Exception("Select Boards no count");
         }
 
-        
         $item = $result[0];
     } else if(REQUEST_METHOD === "POST") {
        
@@ -98,36 +97,39 @@ try {
 </head>
 <body>
     <main>
-      <form action="./1update.php" method="post">
+    <div class="main-top">
+           수정
+    </div>
+        <div class="main-middle">
+        <form action="./1update.php" method="post">
         <input type="hidden" name="no" value="<?php echo $item["no"];?>">
         <input type="hidden" name="page" value="<?php echo $page; ?>">
-        
-          <div class="line-item">
-            <div class="insert-time">게시글 번호</div>
+        <div class="line-item">
+            <div class="insert-title">게시글 번호</div>
             <div class="line-content"><?php echo $item["no"]; ?></div>
-          </div>
-          <div class="line-item">
-            <label class="insert-time" for="title">
-              <div>제목</div>
+        </div>
+        <div class="line-item">
+            <label class="insert-title" for="title">
+                <div>제목</div>
             </label>
-              <div class="line-content">
+                <div class="line-content">
                 <input type="text" name="title" id="title" value="<?php echo $item["title"]; ?>">
-              </div>
-          
-          <div class="line-item">
-            <label class="insert-time" for="content">
-              <div class="line-title-textarea">내용</div>
-            </label>
-              <div class="line-content">
+        </div>
+        <div class="line-item">
+                <label class="insert-title" for="content">
+                <div class="line-title-textarea">내용</div>
+                </label>
+                <div class="line-content">
                 <textarea name="content" id="content" rows="10"><?php echo $item["content"]; ?></textarea>
-              </div>
-          </div>
-      </div>
-      
-          <button type="submit" class="a-button small-button">완료</button>
-            <a href="./1detail.php?no=<?php echo $no ?>&page=<?php echo $page; ?>" class="a-button small-button">취소</a>
-      
-      </form>
+                </div>
+        </div>
+        </div>
+        </div>
+        <div class="main-bottom">
+            <button type="submit" class="a-button small-button">완료</button>
+            <a href="./1detail.php?no=<?php echo $no ?>&page=<?php echo $page; ?>" class="a-button small-button">이전</a>
+        </div>
+        </form>
     </main>
 </body>
 </html>

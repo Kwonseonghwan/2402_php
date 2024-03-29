@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 main {
-    
     width: 600px;
     margin: 0 auto;   
    margin-top: 30px;
@@ -12,8 +11,8 @@ main {
 .main-top {
     text-align: center;
     background-color: #82A7C2;
-    color: white;
     padding: 10px;
+    color: white;
     font-size: 4rem;
     font-weight: 900;
     border: 1px solid black;
@@ -33,6 +32,7 @@ main {
     border: 1px solid black;
     border-top-color: transparent;
     border-bottom-color: transparent;
+    height: 610px;
 }
 .main-bottom {
     text-align: center;
@@ -43,11 +43,15 @@ main {
 .line-title {
     border: 1px solid black;
     border-bottom-color: transparent;
-
+} 
+.line-content {
+    text-align: center;
+    align-items: center;
+    padding: 20px 0;
 }
 .insert-title {
     font-weight: 900;
-
+    text-align: center;
 }
 .item {
     display: grid;
@@ -56,17 +60,57 @@ main {
     margin: 30px 10px;
     padding: 10px 10px;
 }
-a {
-    text-decoration: none;
-    color: black;
-    font-size: 20px;
-    
+input:focus {
+    outline: none;
+}
+input {
+    border: none;
+    border-bottom: 1px solid rgb(180, 180, 180);
+}
+textarea:focus {
+    outline: none;
+    height: auto;
+}
+textarea {
+    border: none;
+    border-bottom: 1px solid rgb(180, 180, 180);
+    resize: none;
 }
 button {
     border: none;
     background-color: transparent;
     cursor: pointer;
     font-size: 20px;
+}
+.b-button {
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    margin: 10px 10px;
+}
+.top-button {
+    text-decoration: none;
+    color: white;
+}
+.delete-button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    border-radius: 50%;
+    background-color: #82A7C2;
+    transition: background-color 1s ease, color 4s ease;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    margin: 10px 10px;
+    font-size: 20px;
+}
+.delete-button:hover {
+    color: rgb(185, 6, 6);
+    background-color: #2876aa;
+    transition: background-color 1s ease, color 4s ease;
 }
 .small-button {
     display: inline-block;
@@ -77,16 +121,24 @@ button {
     text-decoration: none;
     border-radius: 50%;
     background-color: #82A7C2;
+    transition: background-color 1s ease;
 }
 .a-button {
+    font-size: 20px;
     text-decoration: none;
-    color: rgb(228, 228, 228);
+    color: rgb(255, 255, 255);
     margin: 10px 10px;
 }
 .a-button:hover {
-    background-color: #6d8da3;
+    background-color: #2876aa;
+    transition: background-color 1s ease;
 }
 .selected {
     background-color: #41ad80; 
+    transition: background-color 1s ease;
+}
+.selected:hover {
+    background-color: #178658; 
+    transition: background-color 1s ease;
 }
 
