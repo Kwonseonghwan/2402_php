@@ -2,7 +2,7 @@
 
 require_once($_SERVER["DOCUMENT_ROOT"]."/1config.php"); 
 require_once(FILE_LIB_DB); 
-$list_cnt = 5; 									
+$list_cnt = 9; 									
 $page_num = 1; 									
 try {
 
@@ -45,7 +45,6 @@ try {
            <a href="./1main.php" class="top-button">TO DO LIST</a>
         </div>
         <div class="main-middle">
-            <a href="./1insert.php"><div class="write">작성</div></a>
                 <?php
                 foreach($result as $item) {
                 ?>
@@ -59,6 +58,7 @@ try {
                 ?>          
         </div>
         <div class="main-bottom">
+            <div class="write"><a href="./1insert.php" class="insertbutton">작성</a></div>
             <a href="./1main.php?page=<?php echo $prev_page_num ?>" class="a-button small-button">이전</a>
             <?php
             for($num = 1; $num <= $max_page_num; $num++){

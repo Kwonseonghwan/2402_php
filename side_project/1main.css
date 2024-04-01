@@ -22,10 +22,18 @@ main {
     text-decoration: none;
     color: black;
 }
-.write {
+a {
+    text-decoration: none;
+}
+.insertbutton {
     color: black;
-    border: 1px solid black;
-    display: inline-block;
+    border: double;
+}
+.write {
+    margin: 0 auto;
+}
+.item > * {
+    margin: 20px; 
 }
 .main-middle {
     padding: 40px 10px;
@@ -33,6 +41,9 @@ main {
     border-top-color: transparent;
     border-bottom-color: transparent;
     height: 610px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 .main-bottom {
     text-align: center;
@@ -54,11 +65,10 @@ main {
     text-align: center;
 }
 .item {
-    display: grid;
-    grid-template-columns: 40% 40% 20%;
+   width: 100%;
    border: 1px solid black;
-    margin: 30px 10px;
-    padding: 10px 10px;
+    text-align: center;
+   
 }
 input:focus {
     outline: none;
@@ -128,6 +138,7 @@ button {
     text-decoration: none;
     color: rgb(255, 255, 255);
     margin: 10px 10px;
+    
 }
 .a-button:hover {
     background-color: #2876aa;

@@ -15,7 +15,6 @@ try {
     $result_board_cnt = db_select_boards_cnt($conn);
 
     // 페이지 관련 설정 셋팅
-    // TODO : 나중에 추가
     $max_page_num = ceil($result_board_cnt / $list_cnt); // 최대 페이지 수
     $offset = $list_cnt * ($page_num - 1); // 오프셋
     $prev_page_num = ($page_num - 1) < 1 ? 1 : ($page_num - 1); // 이전 버튼 페이지 번호

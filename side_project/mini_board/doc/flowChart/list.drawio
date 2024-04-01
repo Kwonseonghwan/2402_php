@@ -1,0 +1,183 @@
+<mxfile host="app.diagrams.net" modified="2024-04-01T02:21:34.764Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="xXPg--cN_C8CiwcHmqUk" version="24.2.1" type="device">
+  <diagram name="페이지-1" id="0D-5ER3cDS_J40cyOPLk">
+    <mxGraphModel dx="819" dy="930" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-1" value="리스트 페이지 시작" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="260" y="10" width="126" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-4" value="DB접속" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="204.5" y="100" width="235.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-5" value="DB접속 예외 발생" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="274" y="185" width="98" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-1" target="oDAc2vj8PA3nGTr-7Edb-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="520" as="sourcePoint" />
+            <mxPoint x="500" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-7" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-4" target="oDAc2vj8PA3nGTr-7Edb-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="240" as="sourcePoint" />
+            <mxPoint x="423" y="140" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-9" value="예외 메세지 출력" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="975" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-11" value="리스트 페이지 종료" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="252" y="1075" width="134" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-12" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.269;exitY=0.984;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-9" target="oDAc2vj8PA3nGTr-7Edb-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="610" y="565" as="sourcePoint" />
+            <mxPoint x="490" y="755" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-13" value="page 획득" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="154" y="425" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-15" value="page 파라미터 존재" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="263.5" y="295" width="119" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-17" value="1 획득" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="386" y="425" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-19" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-15" target="oDAc2vj8PA3nGTr-7Edb-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="415" as="sourcePoint" />
+            <mxPoint x="560" y="415" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-20" value="YES" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="oDAc2vj8PA3nGTr-7Edb-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-21" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-15" target="oDAc2vj8PA3nGTr-7Edb-17">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="425" as="sourcePoint" />
+            <mxPoint x="500" y="465" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-22" value="NO" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="oDAc2vj8PA3nGTr-7Edb-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-24" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-5" target="oDAc2vj8PA3nGTr-7Edb-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="425" as="sourcePoint" />
+            <mxPoint x="560" y="509" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="610" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-25" value="YES" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="oDAc2vj8PA3nGTr-7Edb-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-26" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-5" target="oDAc2vj8PA3nGTr-7Edb-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490.5" y="345" as="sourcePoint" />
+            <mxPoint x="521.5" y="429" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-27" value="NO" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="oDAc2vj8PA3nGTr-7Edb-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-28" value="DB에서 게시글 수&amp;nbsp;&lt;div&gt;획득&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="509" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-31" value="페이지 관련 설정&amp;nbsp;&lt;div&gt;세팅&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="705" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-32" value="DB에서 게시글 조회" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="785" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-33" value="화면에 출력" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="252" y="965" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-34" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-44" target="oDAc2vj8PA3nGTr-7Edb-31">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="339" y="745" as="sourcePoint" />
+            <mxPoint x="520" y="685" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-36" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-31" target="oDAc2vj8PA3nGTr-7Edb-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="476" y="705" as="sourcePoint" />
+            <mxPoint x="476" y="725" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-39" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-32" target="oDAc2vj8PA3nGTr-7Edb-51">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="468.5" y="745" as="sourcePoint" />
+            <mxPoint x="468.5" y="765" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-40" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.471;exitY=0.88;exitDx=0;exitDy=0;entryX=0.428;entryY=-0.015;entryDx=0;entryDy=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-33" target="oDAc2vj8PA3nGTr-7Edb-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="369.57" y="915" as="sourcePoint" />
+            <mxPoint x="369.57" y="935" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-41" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.457;exitY=1.022;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-13" target="oDAc2vj8PA3nGTr-7Edb-28">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="635" as="sourcePoint" />
+            <mxPoint x="520" y="585" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="430" y="485" />
+              <mxPoint x="310" y="485" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-44" value="게시글 획득 예외 발생" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="595" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-45" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-28" target="oDAc2vj8PA3nGTr-7Edb-44">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="379" y="665" as="sourcePoint" />
+            <mxPoint x="379" y="685" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-46" value="" style="endArrow=none;html=1;rounded=0;endFill=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="346" y="635" as="sourcePoint" />
+            <mxPoint x="616" y="640" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="446" y="635" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-47" value="YES" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="oDAc2vj8PA3nGTr-7Edb-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-49" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-51">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="905" as="sourcePoint" />
+            <mxPoint x="620" y="905" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-50" value="YES" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="oDAc2vj8PA3nGTr-7Edb-49">
+          <mxGeometry x="0.0214" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-51" value="게시글 획득 예외 발생" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="865" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oDAc2vj8PA3nGTr-7Edb-54" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="oDAc2vj8PA3nGTr-7Edb-51" target="oDAc2vj8PA3nGTr-7Edb-33">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="705" as="sourcePoint" />
+            <mxPoint x="390" y="655" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
