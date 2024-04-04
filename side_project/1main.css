@@ -42,8 +42,14 @@ a {
     border-bottom-color: transparent;
     height: 610px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    
     gap: 10px;
+}
+.mainpage {
+    display: grid;
+    
+    grid-template-columns: repeat(3, 1fr);
 }
 .main-bottom {
     text-align: center;
@@ -97,6 +103,7 @@ button {
     text-decoration: none;
     color: rgb(0, 0, 0);
     margin: 10px 10px;
+    font-weight: 900;
 }
 .top-button {
     text-decoration: none;

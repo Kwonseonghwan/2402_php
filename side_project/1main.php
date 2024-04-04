@@ -44,7 +44,7 @@ try {
         <div class="main-top">
            <a href="./1main.php" class="top-button">TO DO LIST</a>
         </div>
-        <div class="main-middle">
+        <div class="main-middle mainpage">
                 <?php
                 foreach($result as $item) {
                 ?>
