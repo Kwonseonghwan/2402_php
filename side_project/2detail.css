@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 .container {
     background-image: url(./windows.png);
@@ -9,9 +10,10 @@
     width: 100%;
     height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 30% 30%;
     grid-template-rows: 55% 35%;
     gap: 3rem;
+    
 }
 .calender {
     
