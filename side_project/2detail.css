@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    background-image: url(./windows.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 55% 35%;
+    gap: 3rem;
+}
+.calender {
+    
+    margin-right: 40px;
+    background-color: aquamarine;
+    margin-top: 8rem;
+    margin-left: 50px;
+}
+.memo {
+    margin-right: 40px;
+    background-color: rgb(48, 188, 97);
+    grid-column: 1;
+    margin-bottom: 3rem;
+    margin-left: 50px;
+    color: white;
+    
+}
+.memoin {
+    background-color: white;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 30px 10px;
+    
+
+    
+    
+}
+.sudalhead {
+    background-image: url(./otter_face.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+}
+.detail {
+    background-color: blueviolet;
+    grid-column: 2; 
+    grid-row: 1/ span 2;
+    margin-bottom: 3rem;
+    margin-top: 8rem;
+    margin-right: 50px;
+}
+
+
+
