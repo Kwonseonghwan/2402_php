@@ -13,3 +13,19 @@ console.log(resultB);
 let ARR5 = [...ARR2];
 resultC = ARR5.filter(val => val % 2 !== 0);
 console.log(resultC);
+
+// filter
+const EVEN = ARR2.filter(num => num % 2 === 0);
+const ODD = ARR2.filter(num => num % 2 === 0);
+console.log(EVEN, ODD)
+
+// foreach문 사용
+const EVEN2 = [];
+const ODD2 = [];
+ARR1.forEach(num => {
+    if(num % 2 === 0) {
+        EVEN2[EVEN2.length] = num;
+    } else {
+        ODD2[ODD2.length] = num;
+    }
+});
