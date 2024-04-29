@@ -5,9 +5,6 @@ function nowTime() {
         return String(val).padStart(length, '0');
     };
     
-    // let HOUR = (NOW.getHours());
-    // HOUR = lpadZero(HOUR);
-
     let HOUR = NOW.getHours();
 
     const MINUTE = lpadZero(NOW.getMinutes(), 2);
