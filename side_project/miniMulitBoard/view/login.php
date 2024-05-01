@@ -18,7 +18,11 @@
 
     <div class="container d-flex justify-content-center align-items-center h-75">
         <form style="width: 250px" action="/user/login" method = "post">
-            <div class="text-danger">에러에러에러</div>
+            <?php
+                foreach($this->arrErrorMsg as $val) {
+                    echo '<div class="text-danger">'.$val.'</div>';
+                }
+            ?>
             <label for="u_email" class="form-label">아이디</label>
             <input type="text" class="form-control mb-3" id="u_email" name = "u_email">
         
