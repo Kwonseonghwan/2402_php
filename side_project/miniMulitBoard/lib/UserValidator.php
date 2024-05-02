@@ -2,6 +2,7 @@
 namespace lib;
 
 class UserValidator {
+    
     public static function chkValidator(array $param_arr) {
         $arrErrorMsg = [];  // 에러 메세지 보관용
 
