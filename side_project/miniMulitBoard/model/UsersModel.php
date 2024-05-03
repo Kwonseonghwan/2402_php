@@ -30,5 +30,31 @@ class UsersModel extends Model {
         exit;
     }
 }
+
+// 회원 정보 인서트
+public function addUserInfo($paramArr) {
+    try {
+        $sql =
+            " INSERT INTO users( "
+            ." u_email "
+            ." ,u_pw "
+            ." ,u_name "
+            ." ) "
+            ." VALUES( "
+            ." :u_email "
+            ." ,:u_pw "
+            ." ,:u_name "
+            ." ) "
+            ;
+            
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute($paramArr);
+
+        return $stmt->rowCount();
+    } catch (\Throwable $th) {
+        echo "UsersModel -> addUserInfo(), ".$th->getMessage();
+        exit;
+    }
+}
 }
 

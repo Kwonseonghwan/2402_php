@@ -13,37 +13,10 @@
     <title>자유 게시판</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">미니보드</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  게시판
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                  <?php
-                    foreach($this->arrBoardsNameInfo as $item) {
-                  ?>
-                  <li><a class="dropdown-item" href="/board/list?b_type=<?php echo $item["b_type"]; ?>"><?php echo $item["bn_name"]; ?></a></li>
-
-                  <?php
-                    }
-                  ?>
-                  
-                </ul>
-              </li>
-            </ul>
-            <a href="/user/logout" class="navbar-nav nav-link text-light" role="button">로그아웃</a>
-          </div>
-        </div>
-      </nav>
-
-      <div class="text-center mt-5 mb-5">
+  <!-- 헤더 -->
+  <?php require_once("view/inc/header.php"); ?>
+  
+  <div class="text-center mt-5 mb-5">
         <h1><?php echo $this->boardName; ?></h1>
         <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -63,8 +36,10 @@
         <?php
           foreach($this->arrBoardList as $item) {
         ?>
-        <div class="card" >
-            <img src="<?php echo $item["b_img"]; ?>" class="card-img-top" alt="수달">
+        <div class="card" id="card<?php echo $item["b_id"]; ?>">
+         
+            <img src="<?php echo $item["b_img"]; ?>" class="card-img-top">
+          
             <div class="card-body">
               <h5 class="card-title"><?php echo $item["b_title"]; ?></h5>
               <p class="card-text"><?php echo $item["b_content"]; ?></p>
@@ -102,7 +77,11 @@
                     <br>
                     <img src="/view/css/otter.png" class="card-img-top" alt="수달">
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer justify-content-between">
+                  <div>
+                    <button class="btn btn-secondary">수정</button>
+                    <button id="my-btn-delete" type="button" class="btn btn-warning">삭제</button>
+                  </div>
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
                 </div>
             </form>
