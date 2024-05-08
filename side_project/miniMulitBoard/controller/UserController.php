@@ -5,6 +5,13 @@ use lib\UserValidator;
 use model\UsersModel;
 
 class UserController extends Controller {
+    private $userInfo = [];
+
+    // getter 유저 정보
+    public function getUserInfo($key) {
+        return $this->userInfo[$key];
+    }
+
     // 로그인 페이지로 이동
     protected function loginGet() {
         return "login.php";
@@ -151,4 +158,60 @@ protected function chkEmailPost() {
 private function encryptionPassword($pw, $email) {
     return base64_encode($pw.$email);
 }
+
+// 회원 정보 수정 페이지 이동
+protected function editGet() {
+    // 회원정보 습득
+    $queryData = [
+        "u_id" => $_SESSION["u_id"]
+    ];
+    $modelUsers = new UsersModel();
+    $this->userInfo = $modelUsers->getUserInfo($queryData);
+
+    return "userEdit.php";
+}
+
+// 회원정보 수정 처리
+protected function editPost() {
+    $requestData = [
+        "u_name" => $_POST["u_name"]
+        ,"u_pw" => $_POST["u_pw"]
+        ,"u_pw_chk" => $_POST["u_pw_chk"]
+    ];
+
+    // 유저 정보 획득
+    $selectData = [
+        "u_id" => $_SESSION["u_id"]
+    ];
+    $modelUsers = new UsersModel();
+    $this->userInfo = $modelUsers->getUserInfo($selectData);
+
+    // 유효성 체크
+    $resultValidator = UserValidator::chkValidator($requestData);
+    if(count($resultValidator) > 0) {
+        $this->arrErrorMsg = $resultValidator;
+        return "userEdit.php";
+    }
+
+    // 유저 정보 업데이트
+    $updateData = [
+        "u_id" => $_SESSION["u_id"]
+        ,"u_name" => $requestData["u_name"]
+        ,"u_pw" => $this->encryptionPassword($requestData["u_pw"], $this->getUserInfo("u_email"))
+    ];
+
+    $modelUsers->beginTransaction();
+    $resultUpdate = $modelUsers->updateUserInfo($updateData);
+    $resultUpdate = 0;
+    if($resultUpdate !== 1) {
+        $modelUsers->rollBack();
+        $this->arrErrorMsg= ["회원정보 수정 실패"];
+        return "userEdit.php";
+    }
+    
+    $modelUsers->commit();
+    return "Location: /board/list";
+}
+
+
 }

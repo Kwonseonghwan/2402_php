@@ -11,6 +11,10 @@ class Controller {
     // 비로그인시 접속 불가능한 URL리스트
     private $arrNeedAuth = [
         "board/list"
+        ,"board/detail"
+        ,"board/add"
+        ,"board/delete"
+        ,"user/edit"
     ];
 
     // 생성자
