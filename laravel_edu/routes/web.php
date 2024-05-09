@@ -14,10 +14,7 @@ use Illuminate\Http\Request;
 |
 */
 
-// 존재하지 않는라우터 정의, 되도록이면 가장 최하단에 위치
-Route::fallback(function() {
-    return '없는 url';
-});
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -95,8 +92,47 @@ Route::get('/send', function() {
 
     return view('send')
     // ->with(['gender' => '무성', 'name' => 'hong']);
-    
         ->with('gender', '무성')
         ->with('name', '홍')
         ->with('data', $arr);
+});
+
+// 컨트롤러 연결
+// 커맨드로 컨트롤러 생성 : php artisan make:controller 컨트롤러명
+use App\Http\Controllers\TestController;
+Route::get('/test', [TestController::class, 'index']);
+
+Route::get('/test/create', [TestController::class, 'create']);
+
+// 리소스 라우터
+use App\Http\Controllers\TaskController;
+Route::resource('task', TaskController::class);
+
+// 블레이드 템플릿 연습용
+use App\Http\Controllers\EduController;
+use App\Http\Controllers\UserController;
+
+Route::get('/edu', [EduController::class, 'index']);
+
+
+// DB 관련 연습용
+Route::get('/user', [UserController::class, 'eduUser']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 존재하지 않는라우터 정의, 되도록이면 가장 최하단에 위치
+Route::fallback(function() {
+    return '없는 url';
 });
