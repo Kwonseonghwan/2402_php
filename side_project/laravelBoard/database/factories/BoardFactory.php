@@ -20,9 +20,9 @@ class BoardFactory extends Factory
     public function definition()
     {
         $arrImg = [
-            '/public/img/0tter.jpg'
-            ,'/public/img/otter.jpg'
-            ,'/public/img/otter_face.jpg'
+            '/img/0tter.png'
+            ,'/img/otter.png'
+            ,'/img/otter_face.png'
         ];
         return [
             'user_id' => User::inRandomOrder()->first()->id
