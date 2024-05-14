@@ -53,6 +53,11 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
         ],
 
+        // 파일 설정 루트 설정
+        'my' => [
+            'driver' => 'local',
+            'root' => public_path(),
+        ]
     ],
 
     /*

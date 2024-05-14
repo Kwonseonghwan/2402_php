@@ -69,12 +69,32 @@ class UserController extends Controller
         Auth::logout(); // 로그아웃
 
         // Session 객체 이용
-        Session::invalidate(); // 기존 세션의 모든 데이터를 제거하고 새로운 세션 ID를 발급
-        Session::regenerateToken(); // CSRF 토큰 재발급
+        // Session::invalidate(); // 기존 세션의 모든 데이터를 제거하고 새로운 세션 ID를 발급
+        // Session::regenerateToken(); // CSRF 토큰 재발급
 
         // Request 객체의 Session메소드 이용
-        // $request->session()->invalidate();
-        // $request->session()->regenerateToken();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('get.login');
+    }
+
+    // 회원가입 처리
+    public function regist(Request $request) {
+        // 유효성 검사
+
+        $request->validate([
+            'email' => ['required', 'email', 'max:50']
+            ,'password' => 'required|min:2|max:20|regex:/^[a-zA-Z0-9]+$/'
+            ,'name' => ['required', 'regex:/^[가-힣]{2,30}$/u']
+        ]);
+
+        // 회원 정보 가공
+        $insertData = $request->only('email', 'password', 'name');
+        $insertData['password'] = Hash::make($insertData['password']);
+
+        // 인서트 처리
+        User::create($insertData);
 
         return redirect()->route('get.login');
     }

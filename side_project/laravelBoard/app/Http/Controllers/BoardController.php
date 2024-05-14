@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Board;
+use App\Models\BoardName;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -29,8 +30,14 @@ class BoardController extends Controller
         // if(!Auth::check()) {
         //    return redirect()->route('get.login'); 
         // }
+        // 게시판 이름 조회
+        $resultBoardName = BoardName::select('name', 'type')
+                                    ->where('type', $type)
+                                    ->first();
+
         return view('boardIndex')
-                ->with('data', $resultBoardList);
+                ->with('data', $resultBoardList)
+                ->with('boardNameInfo', $resultBoardName);
     }
 
     /**
@@ -51,18 +58,20 @@ class BoardController extends Controller
      */
     public function store(Request $request)
     {
-        // var_dump($request->all());
+        // 파일 서버에 저장
+        $filePath = $request->file('file')->store('img');
+
 
         // $request->file('file')->store(public_path().'/img');
-        // TODO : 파일 업로드 처리
 
+        // 인서트 데이터 작성
         $insertData = $request->only('title', 'content', 'type');
         $insertData['user_id'] = Auth::id();
-        $insertData['img'] = '/img/5otter.png'; // 나중에 수정
+        $insertData['img'] = "/".$filePath;
 
-        $resultInsert = Board::create($insertData);
+        Board::create($insertData);
 
-        return redirect()->route('board.index');
+        return redirect()->route('board.index', ['type' => $request->type]);
     }
 
     /**
@@ -73,7 +82,6 @@ class BoardController extends Controller
      */
     public function show($id)
     {
-        Log::debug('board.store Start');
         // 게시글 정보 획득
         $resultBoardInfo = Board::find($id);
         
@@ -115,6 +123,12 @@ class BoardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Board::destroy($id);
+        $responseData = [
+            'errorFlg' => false
+            ,'deletedId' => $id
+        ];
+
+        return response()->json($responseData);
     }
 }
