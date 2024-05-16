@@ -17,6 +17,7 @@ class BoardController extends Controller
      */
     public function index(Request $request)
     {
+        // 게시글 타입 획득
         $type = 0;
         if($request->has('type')) {
             $type = $request->type;
@@ -24,12 +25,9 @@ class BoardController extends Controller
 
         // 게시글 조회
         $resultBoardList = Board::where('type', $type)
-                                ->orderBy('created_at', 'DESC')
-                                ->get();
+                            ->orderBy('created_at', 'DESC')
+                            ->get();
 
-        // if(!Auth::check()) {
-        //    return redirect()->route('get.login'); 
-        // }
         // 게시판 이름 조회
         $resultBoardName = BoardName::select('name', 'type')
                                     ->where('type', $type)
@@ -60,15 +58,12 @@ class BoardController extends Controller
     {
         // 파일 서버에 저장
         $filePath = $request->file('file')->store('img');
-
-
-        // $request->file('file')->store(public_path().'/img');
-
-        // 인서트 데이터 작성
+        
+        // insert 데이터 작성
         $insertData = $request->only('title', 'content', 'type');
         $insertData['user_id'] = Auth::id();
         $insertData['img'] = "/".$filePath;
-
+        
         Board::create($insertData);
 
         return redirect()->route('board.index', ['type' => $request->type]);
@@ -82,9 +77,10 @@ class BoardController extends Controller
      */
     public function show($id)
     {
+        Log::debug('board.store Start');
         // 게시글 정보 획득
         $resultBoardInfo = Board::find($id);
-        
+
         Log::debug('board info get');
         $responseData = $resultBoardInfo->getOriginal();
         $responseData['auth_id'] = Auth::id();
@@ -128,7 +124,7 @@ class BoardController extends Controller
             'errorFlg' => false
             ,'deletedId' => $id
         ];
-
+        
         return response()->json($responseData);
     }
 }

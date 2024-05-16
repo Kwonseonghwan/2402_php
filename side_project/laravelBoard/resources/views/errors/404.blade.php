@@ -10,9 +10,8 @@
 @section('main')
 <main class="d-flex justify-content-center align-items-center h-75">
     <div>
-        <h2>500 에러</h2>
-        <p>정상적으로 처리되지 않았습니다.</p>
-        <p>잠시 후 다시 시도해 주십시오.</p>
+        <h2>404 에러</h2>
+        <p>존재하지 않는 페이지 입니다.</p>
         <a href="{{route('get.login')}}">로그인 페이지로 돌아가기</a>
     </div>
 </main>

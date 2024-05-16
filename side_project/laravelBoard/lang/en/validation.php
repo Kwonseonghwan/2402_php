@@ -43,7 +43,7 @@ return [
     'digits_between' => 'The :attribute must be between :min and :max digits.',
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
-    'email' => ':attribute 주소가 아닙니다',
+    'email' => ':attribute 주소가 아닙니다.',
     'ends_with' => 'The :attribute must end with one of the following: :values.',
     'enum' => 'The selected :attribute is invalid.',
     'exists' => 'The selected :attribute is invalid.',
@@ -108,7 +108,6 @@ return [
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => ':attribute 이/가 형식에 맞지 않습니다.',
     'required' => ':attribute 은/는 필수항목입니다.',
-    
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',

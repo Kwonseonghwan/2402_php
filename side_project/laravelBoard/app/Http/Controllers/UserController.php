@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,33 +15,36 @@ use function PHPUnit\Framework\isNull;
 class UserController extends Controller
 {
     public function login(Request $request) {
+        // --------------
         // 유효성 검사
+        // --------------
         $request->validate([
-            // 'email' => 'required|email|max:50'
             'email' => ['required', 'email', 'max:50']
             ,'password' => 'required|min:2|max:20|regex:/^[a-zA-Z0-9]+$/'
         ]);
 
-        // validator 객체 생성으로 체크하는 방법(자동으로 이전 페이지로 이동x)
+        // Validator 객체 생성으로 체크하는 방법(자동으로 이전 페이지로 이동X)
         // $validator = Validator::make(
         //     $request->only('email', 'password')
         //     ,[
         //         'email' => ['required', 'email', 'max:50']
-        //         ,'password' => 'required|min:2|max:20|regex:/^[a-zA-Z0-9]+$/' 
+        //         ,'password' => 'required|min:2|max:20|regex:/^[a-zA-Z0-9]+$/'
         //     ]
         // );
-
         // if($validator->fails()) {
-        //     // foreach ($validator->errors()->all() as $error) {
-        //     //     echo $error.'<br>';
-        //     // }
         //     return redirect()
         //             ->route('get.login')
         //             ->withErrors($validator->errors());
         // }
 
+        // --------------
         // 유저 정보 습득
+        // --------------
         $resultUserInfo = User::where('email', $request->email)->first();
+
+        // --------------
+        // 회원 정보 체크
+        // --------------
         $errorMsg = '';
         if(is_null($resultUserInfo)) {
             // 회원 존재 여부 체크
@@ -56,33 +60,41 @@ class UserController extends Controller
             return redirect()->route('get.login')->withErrors($errorMsg);
         }
 
+        // -------------
         // 유저 인증 처리
+        // -------------
         Auth::login($resultUserInfo);
-        // Auth:id() : 로그인한 유저 pk획득
-        // Auth:user() : 로그인한 유저 정보 획득
-        // Auth:check() : 현재 로그인 중인지 체크
+        // Auth::id() : 로그인한 유저 pk 획득
+        // Auth::user() : 로그인한 유저 정보 획득
+        // Auth::check() : 현재 로그인 중인지 체크
 
         return redirect()->route('board.index');
     }
-    // 로그아웃처리
+
+    /**
+     * 로그아웃 처리
+     */
     public function logout(Request $request) {
         Auth::logout(); // 로그아웃
-
-        // Session 객체 이용
-        // Session::invalidate(); // 기존 세션의 모든 데이터를 제거하고 새로운 세션 ID를 발급
-        // Session::regenerateToken(); // CSRF 토큰 재발급
 
         // Request 객체의 Session메소드 이용
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
+        // Session 객체이용
+        // Session::invalidate(); // 기존 세션의 모든 데이터를 제거하고 새로운 세션 ID를 발급
+        // Session::regenerateToken(); // CSRF 토큰 재발급
+
         return redirect()->route('get.login');
     }
 
-    // 회원가입 처리
+    /**
+     * 회원가입 처리
+     */
     public function regist(Request $request) {
+        // --------------
         // 유효성 검사
-
+        // --------------
         $request->validate([
             'email' => ['required', 'email', 'max:50']
             ,'password' => 'required|min:2|max:20|regex:/^[a-zA-Z0-9]+$/'
@@ -97,5 +109,53 @@ class UserController extends Controller
         User::create($insertData);
 
         return redirect()->route('get.login');
+    }
+
+    /**
+     * 이메일 중복 체크
+     */
+    public function emailChk(Request $request) {
+        try {
+            // 응답 데이터 초기화
+            $responseData = [
+                'errorFlg' => true
+                ,'emailFlg' => true
+                ,'errorMsg' => ''
+            ];
+
+            // --------------
+            // 유효성 검사
+            // --------------
+            $validation = Validator::make(
+                $request->only('email')
+                ,[
+                    'email' => ['required', 'email', 'max:50']
+                ]
+            );
+
+            if($validation->fails()) {
+                throw new Exception('유효성 체크 에러');
+            }
+
+            // -------------
+            //  이메일 체크
+            // -------------
+            $resultEmail = User::select('id')
+                                ->where('email', $request->email)
+                                ->first();
+            if(!is_null($resultEmail)) {
+                $responseData['emailFlg'] = true;
+                throw new Exception('이메일 중복');
+            }
+
+            // 정상 처리(사용가능 이메일)
+            $responseData['errorFlg'] = false;
+            $responseData['emailFlg'] = false;
+        } catch (\Throwable $th) {
+            $responseData['errorFlg'] = true;
+            $responseData['errorMsg'] = $th->getMessage();
+        } finally {
+            return response()->json($responseData);
+        }
     }
 }
