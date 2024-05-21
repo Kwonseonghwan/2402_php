@@ -8,7 +8,7 @@
                 </div>
                 <img class="img-logo" src="/logo.png">
                 <div class="btn-group">
-                    <div v-if="true">
+                    <div v-if="!$store.state.authFlg">
                         <router-link to="/login"><button class="btn btn-header btn-bg-black">로그인</button></router-link>
                         <router-link to="/login"><button class="btn btn-header btn-bg-white">가입하기</button></router-link>
                     </div>
@@ -23,6 +23,8 @@
 
     <!-- Main -->
     <main>
+        <UserInfoComponent v-if="$store.state.authFlg" />
+        <hr>
         <div class="container">
             <router-view></router-view>
         </div>
@@ -34,6 +36,7 @@
 </template>
 
 <script setup>
+import UserInfoComponent from './UserInfoComponent.vue';
 </script>
 
 <style>
