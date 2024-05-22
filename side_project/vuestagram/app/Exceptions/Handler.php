@@ -74,6 +74,7 @@ class Handler extends ExceptionHandler
     public function context() {
         return [
             'E80' => ['status' => 500, 'msg' => 'DB 에러'],
+            'E90' => ['status' => 500, 'msg' => '없는 서비스'],
             'E99' => ['status' => 500, 'msg' => '시스템 에러'],
         ];
     }

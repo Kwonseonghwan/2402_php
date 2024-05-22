@@ -10,6 +10,11 @@ class MyAuthException extends Exception {
         return [
             'E20' => ['status' => 401, 'msg' => '미등록 유저'],
             'E21' => ['status' => 401, 'msg' => '비밀번호 불일치'],
+            'E22' => ['status' => 401, 'msg' => '토큰이 없습니다'],
+            'E23' => ['status' => 401, 'msg' => '사용 불가능 토큰'],
+            'E24' => ['status' => 401, 'msg' => '토큰 정보 오류'],
+            'E25' => ['status' => 401, 'msg' => '유효하지 않은 토큰'],
+            'E26' => ['status' => 401, 'msg' => '만료된 토큰'],
         ];
     }
 }

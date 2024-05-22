@@ -45,4 +45,17 @@ class MyEncrypt {
     public function makeSalt($saltLength) {
       return Str::random($saltLength);
     }
+
+    /**
+     * 특정 길이의 솔트를 제거한 문자열 반환
+     * 
+     * @param string @signature 시그니처
+     * @param int @saltLength 솔트길이
+     * 
+     * @param string 솔트 제거한 문자열
+     * 
+     */
+    public function subSalt(string $signature, int $saltLength) {
+      return mb_substr($signature, 0, (-1 * $saltLength));
+    }
 }
