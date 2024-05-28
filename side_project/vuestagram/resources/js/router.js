@@ -3,6 +3,7 @@ import LoginComponent from '../components/LoginComponent.vue';
 import BoardComponent from '../components/BoardComponent.vue';
 import BoardCreateComponent from "../components/BoardCreateComponent.vue";
 import store from './store';
+import RegistComponent from "../components/UserRegistration.vue";
 
 function chkAuth(to, from, next) {
     if(!store.state.authFlg) {
@@ -10,7 +11,7 @@ function chkAuth(to, from, next) {
     }
     next();
 }  
-    function chkAuthReturn(to,from,next) {
+function chkAuthReturn(to,from,next) {
     if(to.path === '/login' && store.state.authFlg) {
        if(from.path === '/') {
         next('board');
@@ -20,6 +21,7 @@ function chkAuth(to, from, next) {
     next();
 }
 
+
 const routes = [
     {
         path: '/',
@@ -28,6 +30,11 @@ const routes = [
     {
         path: '/login',
         component: LoginComponent,
+        beforeEnter: chkAuthReturn,
+    },
+    {
+        path: '/regist',
+        component: RegistComponent,
         beforeEnter: chkAuthReturn,
     },
     {
