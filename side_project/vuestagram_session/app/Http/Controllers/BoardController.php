@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Board;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BoardController extends Controller
 {
@@ -35,6 +36,37 @@ class BoardController extends Controller
             'msg' => '게시글 획득 완료',
             'data' => $boardData->toArray()
         ];
+        return response()->json($responseData, 200);
+    }
+
+    /**
+     * 글 작성
+     * 
+     * @param Illuminate\Http\Request $request
+     * 
+     * @return string json
+     */
+
+     public function insertBoard(Request $request) {
+        $userId = Auth::user();
+
+        // insert 데이터 작성
+        $insertData = $request->all();
+        $insertData['user_id'] = $userId->id;
+        $filePath = $request->file('img')->store('img');
+        $insertData['img'] = '/'.$filePath;
+        // $insertData['like'] = 0;
+
+        //insert 처리
+        $BoardInfo = Board::create($insertData);
+
+        // response 데이터 생성
+        $responseData = [
+            'code' => '0'
+            ,'msg' => ''
+            ,'data' => $BoardInfo->toArray()
+        ];
+
         return response()->json($responseData, 200);
     }
 }

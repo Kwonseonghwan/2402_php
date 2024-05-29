@@ -30,7 +30,15 @@ const store = createStore({
         // 게시글 추가
         setMoreBoardData(state, data) {
             state.boardData = [...state.boardData, ...data];
-        }
+        },
+
+        // 게시글 관련
+        setConcatBoardList(state, data) {
+            state.boardData = state.boardList.concat(data);
+        },
+        setUnshiftBoardList(state, data) {
+            state.boardData.unshift(data);
+        },
     },
     actions: {
         /**
@@ -115,6 +123,48 @@ const store = createStore({
                 alert('추가 게시글 획득에 실패했습니다. (' + error.response.data.data + ')');
             });
         },
+        registration(context) {
+            const url = 'api/registration';
+            const data = new FormData(document.querySelector('#registrationForm'));
+
+            axios.post(url, data)
+            .then(response => {
+                console.log(response.data); // TODO
+                router.replace('login');
+            })
+            .catch(error => {
+                console.log(error.response.data); // TODO
+                alert('회원가입 실패 (' + error.response.data.code + ')');
+            });
+
+        },
+        /**
+         * 게시글 작성
+         * @param {*} context 
+         */
+        insertData(context) {
+            const url = '/api/insertboard';
+            const data = new FormData(document.querySelector('#insertDataForm'));
+
+            axios.post(url, data)
+            .then(response => {
+                if(context.state.boardData.length > 1) {
+                // 보드리스트의 가장 앞에 작성한 글 정보 추가
+                context.commit('setUnshiftBoardList', response.data.data);
+                }
+
+                // 유저의 작성글 수 1증가
+                context.commit('setUserBoardsCount');
+                localStorage.setItem('userInfo', JSON.stringify(context.state.userInfo));
+
+                // 게시글 인덱스로 이동
+                router.replace('/board');
+            })
+            .catch(error => {
+                console.log(error.response.data); // TODO
+                alert('글 작성 실패 (' + error.response.data.code + ')');
+            });
+        }
     }
 });
 

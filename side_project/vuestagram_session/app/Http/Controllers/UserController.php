@@ -73,5 +73,52 @@ class UserController extends Controller
         ];
         return response()->json($responseData, 200)
                         ->cookie('auth', '1', -1, null, null, false, false);
+
     }
+        // 회원가입
+        public function registration(Request $request) {
+            // 리퀘스트 데이터 획득
+            $requestData = $request->all();
+
+            // 유효성 검사
+            $validator = Validator::make(
+                $requestData,
+                ['account' => ['required', 'min:4', 'max:20','unique:users', 'regex:/^[a-zA-Z0-9]+$/'], 
+                    'password' => ['required', 'min:4', 'max:20', 'regex:/^[a-zA-Z0-9!@#$%^&*]+$/u'],
+                    'password_chk' => ['same:password'],
+                    'name' => ['required', 'min:2', 'max:20', 'regex:/^[가-힣]+$/u'],
+                    'gender' => ['required', 'regex:/^[0-1]{1}$/'],
+                    'profile' => ['required', 'image']
+                ] 
+            );
+
+            // 유효성 검사 실패 체크
+            if($validator->fails()) {
+                Log::debug('유효성 검사 실패', $validator->errors()->toArray());
+                throw new MyValidateException('E01');
+            }
+
+            // 작성 데이터 생성
+            $insertData = $request->all();
+
+            // 파일저장
+            $insertData['profile'] = $request->file('profile')->store('profile');
+
+            // 비밀번호 설정
+            $insertData['password'] = Hash::make($request->password);
+
+            // 인서트 처리
+            $userInfo = User::create($insertData);
+
+            $responseData = [
+                'code' => '0',
+                'msg' => '로그아웃완료',
+                'data' => $userInfo
+            ];
+
+            return response()->json($responseData, 200);
+
+        }
+
+        
 }
