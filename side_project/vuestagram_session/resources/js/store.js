@@ -31,7 +31,6 @@ const store = createStore({
         setMoreBoardData(state, data) {
             state.boardData = [...state.boardData, ...data];
         },
-
         // 게시글 관련
         setConcatBoardList(state, data) {
             state.boardData = state.boardList.concat(data);
@@ -39,6 +38,15 @@ const store = createStore({
         setUnshiftBoardList(state, data) {
             state.boardData.unshift(data);
         },
+
+        // 게시글 삭제
+        setUserBoardData(state, index) {
+            state.boardData.splice(index, 1);
+        },
+        setUserBoardsCountSub(state) {
+            state.userInfo.boards_count--;
+        },
+
     },
     actions: {
         /**
@@ -80,6 +88,7 @@ const store = createStore({
 
                 context.commit('setAuthFlg', false);
                 context.commit('setUserInfo', null);
+                context.commit('setBoardData' , []);
 
                 router.replace('/login');
             });
@@ -123,6 +132,7 @@ const store = createStore({
                 alert('추가 게시글 획득에 실패했습니다. (' + error.response.data.data + ')');
             });
         },
+        // 회원가입
         registration(context) {
             const url = 'api/registration';
             const data = new FormData(document.querySelector('#registrationForm'));
@@ -164,8 +174,45 @@ const store = createStore({
                 console.log(error.response.data); // TODO
                 alert('글 작성 실패 (' + error.response.data.code + ')');
             });
-        }
-    }
+        },
+        // 게시글 삭제 처리
+        removeBoardItem(context, id) {
+            const url = '/api/delete/' + id;
+            console.log(id);
+            axios.delete(url)
+            .then(response => {
+
+                context.state.boardData.forEach((item, key) => {
+                    if(item.id == response.data.data) {
+                        context.commit('setUserBoardData', key)
+                        return false;
+                    }
+                });
+
+                // 유저의 작성글 수 1 하락
+                context.commit('setUserBoardsCountSub');
+                localStorage.setItem('userInfo', JSON.stringify(context.state.userInfo));
+
+                router.replace('/board')
+            })
+            .catch(error => {
+                console.log(error.response); // TODO
+                alert('글 삭제에 실패했습니다. ( ' + error.response.data.code + ') ');
+            });
+        },
+        // 유저id 불러오기
+        getUserBoardData(context, userId) {
+            const url = '/api/board/' + userId;
+
+            axios.get(url)
+            .then(response => {
+                context.commit('setBoardData', response.data.data);
+            })
+            .catch(error => {
+                alert('사용자 게시글 (' + error.response.data.code + ')');
+            });
+        },
+    }    
 });
 
 export default store;

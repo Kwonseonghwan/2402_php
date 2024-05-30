@@ -15,6 +15,15 @@ const routes = [
             component: LoginComponent,
         },
         {
+            path: '/board/:userId',
+            component: BoardComponent,
+            beforeEnter: (to, from, next) => {
+                const id = to.params.userId
+                store.dispatch('getUserBoardData', id);
+                next();
+            },
+        },
+        {
             path: '/board',
             component: BoardComponent,
             beforeEnter: chkAuth,

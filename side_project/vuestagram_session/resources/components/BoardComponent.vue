@@ -8,6 +8,7 @@
       <hr>
       <div class="etc-box">
         <span>작성자 : {{ detailItem.name }}</span>
+        <button @click="$store.dispatch('removeBoardItem', detailItem.id), closeDetail()" class="btn btn-bg-black btn-close">삭제</button>
         <button @click="closeDetail" class="btn btn-bg-black btn-close">닫기</button>
       </div>
     </div>
@@ -23,9 +24,11 @@
 
 </template>
 <script setup>
-import {onBeforeMount, reactive, ref} from 'vue';
-import {useStore} from 'vuex';
+import { onBeforeMount, reactive, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { useStore } from 'vuex';
 
+const router = useRoute();
 const store = useStore();
 
 let detailItem = reactive({});
@@ -42,10 +45,10 @@ function closeDetail() {
 }
 
 onBeforeMount(() => {
-  if(store.state.boardData.length < 1) {
+  // if(store.state.boardData.length < 1 && router.path == '/board') {
+  if(store.state.boardData.length < 1 && router.path == '/board' ) {
     store.dispatch('getBoardData');
   }
-  store.dispatch('getBoardData');
 })
 </script>
 <style>

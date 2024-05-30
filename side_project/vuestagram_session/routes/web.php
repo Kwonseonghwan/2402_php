@@ -32,3 +32,6 @@ Route::middleware('auth')->get('/api/board', [BoardController::class, 'index']);
 Route::middleware('auth')->get('/api/board{id}', [BoardController::class, 'moreIndex']);
 
 Route::middleware('auth')->post('/api/insertboard', [BoardController::class, 'insertBoard']);
+Route::middleware('auth')->delete('/api/delete/{id}', [BoardController::class, 'deleteBoard']);
+
+Route::middleware('auth')->get('/api/board/{userId}', [BoardController::class, 'getUserBoardData']);

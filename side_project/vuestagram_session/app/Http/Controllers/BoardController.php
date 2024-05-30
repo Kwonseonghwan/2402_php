@@ -10,8 +10,11 @@ class BoardController extends Controller
 {
     //최초 게시글 획득
     public function index() {
+        $userId = Auth::user();
+
         $boardData = Board::select('boards.*', 'users.name')
                                 ->join('users', 'users.id', '=', 'boards.user_id')
+                                ->where('boards.user_id', '=',  $userId->id)
                                 ->orderBy('id', 'DESC')
                                 ->limit(20)
                                 ->get();
@@ -69,4 +72,36 @@ class BoardController extends Controller
 
         return response()->json($responseData, 200);
     }
+
+    // 글 삭제
+    public function deleteBoard($id) {
+        
+        Board::destroy($id);
+
+        $responseData=[
+            'code' => '0',
+            'msg' => '게시글이 삭제',
+            'data' => $id,
+        ];
+
+        return response()->json($responseData);
+    }
+    // 유저ID path
+    public function getUserBoardData($userId) {
+        $userBoards = Board::select('boards.*', 'users.name')
+                            ->join('users', 'users.id', '=', 'boards.user_id')
+                            ->where('boards.user_id', '=',  $userId)
+                            ->orderBy('id', 'DESC')
+                            ->limit(20)
+                            ->get();
+
+        $responseData=[
+            'code' => '0',
+            'msg' => '유저 게시글 조회 실패',
+            'data' => $userBoards
+        ];
+
+        return response()->json($responseData, 200);
+    }
+
 }
