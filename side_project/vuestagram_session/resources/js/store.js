@@ -35,8 +35,14 @@ const store = createStore({
         setConcatBoardList(state, data) {
             state.boardData = state.boardList.concat(data);
         },
+        // 작성 게시글 맨앞에 추가
         setUnshiftBoardList(state, data) {
             state.boardData.unshift(data);
+        },
+        // 유저 작성글 수 + 1
+        setAddUserBoardsCount(state) {
+            state.userInfo.boards_count++;
+            localStorage.setItem('userInfo', state.userInfo);
         },
 
         // 게시글 삭제
@@ -164,7 +170,7 @@ const store = createStore({
                 }
 
                 // 유저의 작성글 수 1증가
-                context.commit('setUserBoardsCount');
+                context.commit('setAddUserBoardsCount');
                 localStorage.setItem('userInfo', JSON.stringify(context.state.userInfo));
 
                 // 게시글 인덱스로 이동

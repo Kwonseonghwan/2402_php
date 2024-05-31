@@ -14,7 +14,7 @@ const routes = [
             path: '/login',
             component: LoginComponent,
         },
-        {
+        { 
             path: '/board/:userId',
             component: BoardComponent,
             beforeEnter: (to, from, next) => {
